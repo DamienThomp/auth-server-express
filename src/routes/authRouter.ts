@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import { AuthRoutes } from './authRoutes'
 import {
-  callback,
-  getAccessToken,
-  refreshAccess,
-  signIn,
+	callback,
+	getAccessToken,
+	refreshAccess,
+	signIn,
 } from './authRoutesHandlers'
 
 const router = Router()
