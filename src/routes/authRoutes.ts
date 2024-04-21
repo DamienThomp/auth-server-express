@@ -3,5 +3,5 @@ export enum AuthRoutes {
   accessToken = '/accessToken',
   refreshAccess = '/refreshAccess',
   signIn = '/signIn',
-  redirect = '/redirect',
+  callback = '/callback',
 }
