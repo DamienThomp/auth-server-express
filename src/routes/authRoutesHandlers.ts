@@ -97,5 +97,5 @@ export const signIn = async (
 }
 
 export const callback = async (request: Request, response: Response) => {
-	response.sendFile(path.join(__dirname, '/../public/index.html'))
+	response.sendFile('/src/public/index.html', { root: './' })
 }
