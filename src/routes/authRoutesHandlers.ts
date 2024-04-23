@@ -12,6 +12,7 @@ import {
 import {
 	AccessTokenResponse,
 	AccessTokenRquestQuery,
+	AuthRoutesErrors,
 	RefreshTokenRequestQuery,
 	SignInRequestQuery,
 } from './authRoutesTypes'
@@ -22,6 +23,8 @@ export const getAccessToken = async (
 	response: Response
 ) => {
 	const { code } = request.query
+
+	if (!code) return response.status(400).send(AuthRoutesErrors.missingCode)
 
 	const formData = new URLSearchParams({
 		code,
@@ -37,8 +40,11 @@ export const getAccessToken = async (
 			body: formData,
 		}
 	)
+	if (tokenResponse.status >= 300) {
+		return response.status(tokenResponse.status).send(tokenResponse.statusText)
+	}
 
-	response.send(tokenResponse)
+	return response.send(tokenResponse)
 }
 
 export const refreshAccess = async (
@@ -46,6 +52,9 @@ export const refreshAccess = async (
 	response: Response
 ) => {
 	const { refresh_token } = request.query
+
+	if (!refresh_token)
+		return response.status(400).send(AuthRoutesErrors.missingRefreshToken)
 
 	const formData = new URLSearchParams({
 		grant_type: 'refresh_token',
@@ -61,7 +70,11 @@ export const refreshAccess = async (
 		}
 	)
 
-	response.send(tokenResponse)
+	if (tokenResponse.status >= 300) {
+		return response.status(tokenResponse.status).send(tokenResponse.statusText)
+	}
+
+	return response.send(tokenResponse)
 }
 
 export const signIn = async (

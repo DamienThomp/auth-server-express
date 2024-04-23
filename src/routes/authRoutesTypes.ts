@@ -12,9 +12,15 @@ export interface RefreshTokenRequestQuery {
 }
 
 //RESPONSE
-export interface AccessTokenResponse {
+export interface AccessTokenResponse extends globalThis.Response {
 	access_token: string
 	refresh_token?: string
 	expires_in: number
 	token_type?: string
+}
+
+//Errors
+export enum AuthRoutesErrors {
+	missingRefreshToken = 'Refresh token missing from request',
+	missingCode = 'Missing code in request',
 }

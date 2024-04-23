@@ -9,20 +9,16 @@ export enum HTTPRequestMethod {
 export async function fecthData<T>(
 	request: globalThis.RequestInfo,
 	options?: globalThis.RequestInit
-): Promise<T | Error> {
+): Promise<T | Response> {
 	try {
 		const response = await fetch(request, options)
 
-		if (!response.ok) {
-			throw new Error(
-				`unable to fetch data: ${response.status} ${response.statusText}`
-			)
-		}
+		if (!response?.ok) return response
 
 		const data = await response.json()
 
-		return data as Promise<T>
+		return data as T
 	} catch (error) {
-		return error as Promise<Error>
+		return error as Response
 	}
 }
