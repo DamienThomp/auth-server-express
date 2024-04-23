@@ -19,7 +19,7 @@ export interface AccessTokenResponse extends globalThis.Response {
 	token_type?: string
 }
 
-//Errors
+//ERRORS
 export enum AuthRoutesErrors {
 	missingRefreshToken = 'Refresh token missing from request',
 	missingCode = 'Missing code in request',
