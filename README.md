@@ -34,7 +34,7 @@ when [creating a new application](https://developer.spotify.com/documentation/we
 
 ### Build & run the application
 
-To build Typescript application:
+To build the Typescript application:
 
 ```shell
 $ npm run build
