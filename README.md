@@ -46,7 +46,7 @@ Running the application:
 $ npm run start
 ```
 
-Or for dev using nodemon
+Or for dev using Nodemon:
 
 ```shell
 $ npm run dev
