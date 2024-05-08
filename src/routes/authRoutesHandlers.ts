@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import path from 'path'
 import querystring from 'querystring'
 import {
 	SHARED_AUTH_HEADER,
@@ -24,7 +23,9 @@ export const getAccessToken = async (
 ) => {
 	const { code } = request.query
 
-	if (!code) return response.status(400).send(AuthRoutesErrors.missingCode)
+	if (!code) {
+		return response.status(400).send(AuthRoutesErrors.missingCode)
+	}
 
 	const formData = new URLSearchParams({
 		code,
@@ -53,8 +54,9 @@ export const refreshAccess = async (
 ) => {
 	const { refresh_token } = request.query
 
-	if (!refresh_token)
+	if (!refresh_token) {
 		return response.status(400).send(AuthRoutesErrors.missingRefreshToken)
+	}
 
 	const formData = new URLSearchParams({
 		grant_type: 'refresh_token',
