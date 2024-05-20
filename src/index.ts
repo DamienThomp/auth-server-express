@@ -11,6 +11,7 @@ const port = process.env.PORT || PORT
 //Middleware
 app.use(limiter)
 app.use(cors())
+app.set('trust proxy', 1)
 
 //Routes
 app.use(AuthRoutes.base, authRouter)
