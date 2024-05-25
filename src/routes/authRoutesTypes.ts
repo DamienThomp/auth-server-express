@@ -24,3 +24,9 @@ export enum AuthRoutesErrors {
 	missingRefreshToken = 'Refresh token missing from request',
 	missingCode = 'Code missing from request',
 }
+
+//AUTH
+export enum AuthGrantType {
+	refreshToken = 'refresh_token',
+	authorizationCode = 'authorization_code',
+}
