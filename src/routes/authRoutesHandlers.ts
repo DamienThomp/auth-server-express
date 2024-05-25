@@ -14,6 +14,7 @@ import {
 	AuthRoutesErrors,
 	RefreshTokenRequestQuery,
 	SignInRequestQuery,
+	AuthGrantType,
 } from './authRoutesTypes'
 import { HTTPRequestMethod, fecthData } from '../utils/HTTPRequest'
 
@@ -30,7 +31,7 @@ export const getAccessToken = async (
 	const formData = new URLSearchParams({
 		code,
 		redirect_uri: REDIRECT_URI ?? '',
-		grant_type: 'authorization_code',
+		grant_type: AuthGrantType.authorizationCode,
 	})
 
 	const tokenResponse = await fecthData<AccessTokenResponse>(
@@ -59,7 +60,7 @@ export const refreshAccess = async (
 	}
 
 	const formData = new URLSearchParams({
-		grant_type: 'refresh_token',
+		grant_type: AuthGrantType.refreshToken,
 		refresh_token: refresh_token,
 	})
 
