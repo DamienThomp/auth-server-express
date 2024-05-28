@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
 import querystring from 'querystring'
 import {
 	SHARED_AUTH_HEADER,
@@ -8,14 +8,13 @@ import {
 	AUTH_RESPONSE_TYPE,
 	AUTH_TOKEN_ROUTE,
 } from '../utils/Constants'
-import {
+import type {
 	AccessTokenResponse,
 	AccessTokenRquestQuery,
-	AuthRoutesErrors,
 	RefreshTokenRequestQuery,
 	SignInRequestQuery,
-	AuthGrantType,
 } from './authRoutesTypes'
+import { AuthRoutesErrors, AuthGrantType } from './authRoutesTypes'
 import { HTTPRequestMethod, fecthData } from '../utils/HTTPRequest'
 
 export const getAccessToken = async (
